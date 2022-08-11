@@ -16,7 +16,8 @@ apiVersion: apps/v1
 kind: Deployment
 metadata:
   {{- $args := dict "dot" . "component" "amqp-messaging-network-router" "name" "dispatch-router" "componentConfig" .Values.amqpMessagingNetworkExample.dispatchRouter }}
-  {{- include "hono.metadata" $args | nindent 2 }}
+  annotations:
+    {{- include "hono.deployAnnotations" $args | nindent 4 }}
 spec:
   replicas: 1
   selector:

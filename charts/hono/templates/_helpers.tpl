@@ -128,19 +128,35 @@ app.kubernetes.io/component: {{ .component | quote }}
 {{- end }}
 
 {{/*
-Add standard annotations for Hono component pods.
+Add standard annotations and allows adding additiational annotations for Hono component pods.
 This includes annotations for marking a pod to be scraped by Prometheus
 and an annotation to define the default container.
 The scope passed in is expected to be a dict with keys
 - "dot": the "." scope and
 - "name": the value to use for the "default-container" annotation
+- (mandatory) "componentConfig": the component's configuration properties from the values.yaml file
 */}}
 {{- define "hono.podAnnotations" -}}
-prometheus.io/scrape: "true"
-prometheus.io/path: "/prometheus"
-prometheus.io/port: {{ include "hono.healthCheckPort" .dot | quote }}
-prometheus.io/scheme: "http"
-kubectl.kubernetes.io/default-container: {{ .name | quote }}
+{{- $global := .dot.Values -}}
+{{- $component := .componentConfig -}}
+{{- $podAnnotations := mergeOverwrite ( $global.podAnnotations | deepCopy ) ( $component.podAnnotations | default dict | deepCopy ) -}}
+{{- $defaultPodAnnotations := dict "prometheus.io/scrape" "true" "prometheus.io/path" "/prometheus" "prometheus.io/port" ( printf "%s" (include "hono.healthCheckPort" .dot) ) "prometheus.io/scheme" "http" "kubectl.kubernetes.io/default-container" (printf "%s" .name) -}}
+{{- $allPodAnnotations := mergeOverwrite ( $defaultPodAnnotations | deepCopy ) ( $podAnnotations | default dict | deepCopy ) -}}
+{{- toYaml $allPodAnnotations }}
+{{- end }}
+
+{{/*
+Add standard annotations and allows adding additiational annotations for Hono component deployments.
+The scope passed in is expected to be a dict with keys
+- "dot": the "." scope and
+- "name": the value to use for the "default-container" annotation
+- (mandatory) "componentConfig": the component's configuration properties from the values.yaml file
+*/}}
+{{- define "hono.deployAnnotations" -}}
+{{- $global := .dot.Values -}}
+{{- $component := .componentConfig -}}
+{{- $deployAnnotations := mergeOverwrite ( $global.deployAnnotations | deepCopy ) ( $component.deployAnnotations | default dict | deepCopy ) -}}
+{{- toYaml $deployAnnotations }}
 {{- end }}
 
 

@@ -56,6 +56,16 @@ probes:
     successThreshold: 1
     timeoutSeconds: 3
 
+# podAnnotations allows you to configure extra annotation on all pods and also
+# override the default pod annotations. Pod annotations can also be configured per
+# component and will override the default and/or global podAnnotations
+podAnnotations: {}
+
+# deployAnnotations allows you to configure extra annotation on all pods and also
+# override the default pod annotations. Pod annotations can also be configured per
+# component and will override the default and/or global podAnnotations
+deployAnnotations: {}
+
 # color indicates if the information printed to the console by components should be
 # formatted in multi-color using ANSI escape sequences.
 console:
@@ -273,6 +283,10 @@ adapters:
     readinessProbeInitialDelaySeconds:
     # probes allows you to overwrite the global probes config values for this specific component
     probes: {}
+    # probes allows you to overwrite the global podAnnotations config values for this specific component
+    podAnnotations: {}
+    # probes allows you to overwrite the global deployAnnotations config values for this specific component
+    deployAnnotations: {}
     # resources contains the container's requests and limits for CPU and memory
     # as defined by the Kubernetes API.
     # Refer to https://kubernetes.io/docs/concepts/configuration/manage-compute-resources-container/
@@ -391,6 +405,10 @@ adapters:
     readinessProbeInitialDelaySeconds:
     # probes allows you to overwrite the global probes config values for this specific component
     probes: {}
+    # probes allows you to overwrite the global podAnnotations config values for this specific component
+    podAnnotations: {}
+    # probes allows you to overwrite the global deployAnnotations config values for this specific component
+    deployAnnotations: {}
     # resources contains the container's requests and limits for CPU and memory
     # as defined by the Kubernetes API.
     # Refer to https://kubernetes.io/docs/concepts/configuration/manage-compute-resources-container/
@@ -500,6 +518,10 @@ adapters:
     readinessProbeInitialDelaySeconds:
     # probes allows you to overwrite the global probes config values for this specific component
     probes: {}
+    # probes allows you to overwrite the global podAnnotations config values for this specific component
+    podAnnotations: {}
+    # probes allows you to overwrite the global deployAnnotations config values for this specific component
+    deployAnnotations: {}
     # resources contains the container's requests and limits for CPU and memory
     # as defined by the Kubernetes API.
     # Refer to https://kubernetes.io/docs/concepts/configuration/manage-compute-resources-container/
@@ -618,6 +640,10 @@ adapters:
     readinessProbeInitialDelaySeconds:
     # probes allows you to overwrite the global probes config values for this specific component
     probes: {}
+    # probes allows you to overwrite the global podAnnotations config values for this specific component
+    podAnnotations: {}
+    # probes allows you to overwrite the global deployAnnotations config values for this specific component
+    deployAnnotations: {}
     # resources contains the container's requests and limits for CPU and memory
     # as defined by the Kubernetes API.
     # Refer to https://kubernetes.io/docs/concepts/configuration/manage-compute-resources-container/
@@ -735,6 +761,10 @@ adapters:
     readinessProbeInitialDelaySeconds:
     # probes allows you to overwrite the global probes config values for this specific component
     probes: {}
+    # probes allows you to overwrite the global podAnnotations config values for this specific component
+    podAnnotations: {}
+    # probes allows you to overwrite the global deployAnnotations config values for this specific component
+    deployAnnotations: {}
     # resources contains the container's requests and limits for CPU and memory
     # as defined by the Kubernetes API.
     # Refer to https://kubernetes.io/docs/concepts/configuration/manage-compute-resources-container/
@@ -853,6 +883,10 @@ authServer:
   readinessProbeInitialDelaySeconds:
   # probes allows you to overwrite the global probes config values for this specific component
   probes: {}
+  # probes allows you to overwrite the global podAnnotations config values for this specific component
+  podAnnotations: {}
+  # probes allows you to overwrite the global deployAnnotations config values for this specific component
+  deployAnnotations: {}
   # resources contains the container's requests and limits for CPU and memory
   # as defined by the Kubernetes API.
   # Refer to https://kubernetes.io/docs/concepts/configuration/manage-compute-resources-container/
@@ -1106,6 +1140,10 @@ deviceRegistryExample:
     readinessProbeInitialDelaySeconds:
     # probes allows you to overwrite the global probes config values for this specific component
     probes: {}
+    # probes allows you to overwrite the global podAnnotations config values for this specific component
+    podAnnotations: {}
+    # probes allows you to overwrite the global deployAnnotations config values for this specific component
+    deployAnnotations: {}
     # resources contains the container's requests and limits for CPU and memory
     # as defined by the Kubernetes API.
     # If not specified here, then the values from "deviceRegistryExample.resources" are used.
@@ -1163,6 +1201,10 @@ deviceRegistryExample:
     readinessProbeInitialDelaySeconds:
     # probes allows you to overwrite the global probes config values for this specific component
     probes: {}
+    # probes allows you to overwrite the global podAnnotations config values for this specific component
+    podAnnotations: {}
+    # probes allows you to overwrite the global deployAnnotations config values for this specific component
+    deployAnnotations: {}
     # If not specified here, then the values from "deviceRegistryExample.resources" are used.
     # Refer to https://kubernetes.io/docs/concepts/configuration/manage-compute-resources-container/
     # for a description of the properties' semantics.
@@ -1232,6 +1274,10 @@ deviceRegistryExample:
     readinessProbeInitialDelaySeconds:
     # probes allows you to overwrite the global probes config values for this specific component
     probes: {}
+    # probes allows you to overwrite the global podAnnotations config values for this specific component
+    podAnnotations: {}
+    # probes allows you to overwrite the global deployAnnotations config values for this specific component
+    deployAnnotations: {}
     # If not specified here, then the values from "deviceRegistryExample.resources" are used.
     # Refer to https://kubernetes.io/docs/concepts/configuration/manage-compute-resources-container/
     # for a description of the properties' semantics.
@@ -1376,6 +1422,10 @@ commandRouterService:
   readinessProbeInitialDelaySeconds:
   # probes allows you to overwrite the global probes config values for this specific component
   probes: {}
+  # probes allows you to overwrite the global podAnnotations config values for this specific component
+  podAnnotations: {}
+  # probes allows you to overwrite the global deployAnnotations config values for this specific component
+  deployAnnotations: {}
   # resources contains the container's requests and limits for CPU and memory
   # as defined by the Kubernetes API.
   # Refer to https://kubernetes.io/docs/concepts/configuration/manage-compute-resources-container/

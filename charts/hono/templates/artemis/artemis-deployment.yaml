@@ -17,6 +17,8 @@ kind: Deployment
 metadata:
   {{- $args := dict "dot" . "component" "amqp-messaging-network-broker" "name" "artemis" "componentConfig" .Values.amqpMessagingNetworkExample.broker.artemis "configMountPath" "/opt/amq/conf" }}
   {{- include "hono.metadata" $args | nindent 2 }}
+  annotations:
+    {{- include "hono.deployAnnotations" $args | nindent 4 }}
 spec:
   replicas: 1
   selector:
